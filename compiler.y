@@ -20,17 +20,21 @@
 }
 
 /* Token without return */
-%token COUT
+%token COUT ENDL
 %token SHR SHL BAN BOR BNT BXO ADD SUB MUL DIV REM NOT GTR LES GEQ LEQ EQL NEQ LAN LOR
 %token VAL_ASSIGN ADD_ASSIGN SUB_ASSIGN MUL_ASSIGN DIV_ASSIGN REM_ASSIGN BAN_ASSIGN BOR_ASSIGN BXO_ASSIGN SHR_ASSIGN SHL_ASSIGN INC_ASSIGN DEC_ASSIGN
 %token IF ELSE FOR WHILE RETURN BREAK CONTINUE
 
 /* Token with return, which need to sepcify type */
 %token <var_type> VARIABLE_T
-%token <s_var> IDENT
+%token <s_var> IDENT STR_LIT
+%token <b_var> BOOL_LIT
+%token <i_var> INT_LIT
+%token <f_var> FLOAT_LIT
+
 
 /* Nonterminal with return, which need to sepcify type */
-%type <object_val> Expression
+%type <object_val> Expression Term Factor
 
 %left ADD SUB
 %left MUL DIV REM
@@ -62,7 +66,7 @@ DefineVariableStmt
 
 /* Function */
 FunctionDefStmt
-    : VARIABLE_T IDENT '(' FunctionParameterStmtList ')' { createFunction($<var_type>1, $<s_var>2); } '{' '}' { dumpScope(); }
+    : VARIABLE_T IDENT '(' FunctionParameterStmtList ')' { createFunction($<var_type>1, $<s_var>2); } '{' StmtList '}' { dumpScope(); }
 ;
 FunctionParameterStmtList 
     : FunctionParameterStmtList ',' FunctionParameterStmt
@@ -71,6 +75,7 @@ FunctionParameterStmtList
 ;
 FunctionParameterStmt
     : VARIABLE_T IDENT { pushFunParm($<var_type>1, $<s_var>2, VAR_FLAG_DEFAULT); }
+    | VARIABLE_T IDENT '[' ']' { pushFunParm($<var_type>1, $<s_var>2, VAR_FLAG_DEFAULT); }
 ;
 
 /* Scope */
@@ -87,6 +92,30 @@ Stmt
 CoutParmListStmt
     : CoutParmListStmt SHL Expression { pushFunInParm(&$<object_val>3); }
     | SHL Expression { pushFunInParm(&$<object_val>2); }
+    | SHL STR_LIT
+    | SHL ENDL 
+;
+
+Expression
+    : Expression '+' Term
+    | Expression '-' Term
+    | Term
+;
+Term
+    : Term '*' Factor 
+    | Term '/' Factor
+    | Term '%' Factor 
+    | Factor
+;
+Factor
+    : NOT Factor { $$ = $2; }
+    | BOOL_LIT { $$ = *createVariable(OBJECT_TYPE_BOOL, "bool", VAR_FLAG_DEFAULT); }
+    | SUB Factor { $$ = $2; }
+    | '(' Expression ')' { pushFunInParm(&$<object_val>2); }
+    | INT_LIT { $$ = *createVariable(OBJECT_TYPE_INT, "int", VAR_FLAG_DEFAULT); }
+    | FLOAT_LIT { $$ = *createVariable(OBJECT_TYPE_FLOAT, "float", VAR_FLAG_DEFAULT); }
+    | IDENT { $$ = *createVariable(OBJECT_TYPE_UNDEFINED, "undefined", VAR_FLAG_DEFAULT); }
+    | STR_LIT { $$ = *createVariable(OBJECT_TYPE_STR, "string", VAR_FLAG_DEFAULT); }
 ;
 
 %%
