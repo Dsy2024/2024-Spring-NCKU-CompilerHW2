@@ -20,7 +20,7 @@
 }
 
 /* Token without return */
-%token COUT ENDL
+%token COUT
 %token SHR SHL BAN BOR BNT BXO ADD SUB MUL DIV REM NOT GTR LES GEQ LEQ EQL NEQ LAN LOR
 %token VAL_ASSIGN ADD_ASSIGN SUB_ASSIGN MUL_ASSIGN DIV_ASSIGN REM_ASSIGN BAN_ASSIGN BOR_ASSIGN BXO_ASSIGN SHR_ASSIGN SHL_ASSIGN INC_ASSIGN DEC_ASSIGN
 %token IF ELSE FOR WHILE RETURN BREAK CONTINUE
@@ -66,7 +66,7 @@ DefineVariableStmt
 
 /* Function */
 FunctionDefStmt
-    : VARIABLE_T IDENT '(' FunctionParameterStmtList ')' { createFunction($<var_type>1, $<s_var>2); } '{' StmtList '}' { dumpScope(); }
+    : VARIABLE_T IDENT { createFunction($<var_type>1, $<s_var>2); pushScope(); } '(' FunctionParameterStmtList ')' '{' StmtList '}' { dumpScope(); }
 ;
 FunctionParameterStmtList 
     : FunctionParameterStmtList ',' FunctionParameterStmt
@@ -92,8 +92,7 @@ Stmt
 CoutParmListStmt
     : CoutParmListStmt SHL Expression { pushFunInParm(&$<object_val>3); }
     | SHL Expression { pushFunInParm(&$<object_val>2); }
-    | SHL STR_LIT
-    | SHL ENDL 
+    | SHL STR_LIT { printf("STR_LIT \"%s\"\n", $<s_var>2); }
 ;
 
 Expression
@@ -112,10 +111,12 @@ Factor
     | BOOL_LIT { $$ = *createVariable(OBJECT_TYPE_BOOL, "bool", VAR_FLAG_DEFAULT); }
     | SUB Factor { $$ = $2; }
     | '(' Expression ')' { pushFunInParm(&$<object_val>2); }
-    | INT_LIT { $$ = *createVariable(OBJECT_TYPE_INT, "int", VAR_FLAG_DEFAULT); }
+    | INT_LIT { printf("INT_LIT %d\n", $<i_var>1); }
     | FLOAT_LIT { $$ = *createVariable(OBJECT_TYPE_FLOAT, "float", VAR_FLAG_DEFAULT); }
-    | IDENT { $$ = *createVariable(OBJECT_TYPE_UNDEFINED, "undefined", VAR_FLAG_DEFAULT); }
-    | STR_LIT { $$ = *createVariable(OBJECT_TYPE_STR, "string", VAR_FLAG_DEFAULT); }
+    | IDENT { 
+    Object* variable = findVariable($<s_var>1);
+    printf("IDENT (name=%s, address=%ld)\n", $<s_var>1, variable->symbol->addr); 
+    $$ = *variable; }
 ;
 
 %%

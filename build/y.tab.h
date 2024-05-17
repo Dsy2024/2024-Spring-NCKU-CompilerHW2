@@ -55,53 +55,52 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     COUT = 258,                    /* COUT  */
-    ENDL = 259,                    /* ENDL  */
-    SHR = 260,                     /* SHR  */
-    SHL = 261,                     /* SHL  */
-    BAN = 262,                     /* BAN  */
-    BOR = 263,                     /* BOR  */
-    BNT = 264,                     /* BNT  */
-    BXO = 265,                     /* BXO  */
-    ADD = 266,                     /* ADD  */
-    SUB = 267,                     /* SUB  */
-    MUL = 268,                     /* MUL  */
-    DIV = 269,                     /* DIV  */
-    REM = 270,                     /* REM  */
-    NOT = 271,                     /* NOT  */
-    GTR = 272,                     /* GTR  */
-    LES = 273,                     /* LES  */
-    GEQ = 274,                     /* GEQ  */
-    LEQ = 275,                     /* LEQ  */
-    EQL = 276,                     /* EQL  */
-    NEQ = 277,                     /* NEQ  */
-    LAN = 278,                     /* LAN  */
-    LOR = 279,                     /* LOR  */
-    VAL_ASSIGN = 280,              /* VAL_ASSIGN  */
-    ADD_ASSIGN = 281,              /* ADD_ASSIGN  */
-    SUB_ASSIGN = 282,              /* SUB_ASSIGN  */
-    MUL_ASSIGN = 283,              /* MUL_ASSIGN  */
-    DIV_ASSIGN = 284,              /* DIV_ASSIGN  */
-    REM_ASSIGN = 285,              /* REM_ASSIGN  */
-    BAN_ASSIGN = 286,              /* BAN_ASSIGN  */
-    BOR_ASSIGN = 287,              /* BOR_ASSIGN  */
-    BXO_ASSIGN = 288,              /* BXO_ASSIGN  */
-    SHR_ASSIGN = 289,              /* SHR_ASSIGN  */
-    SHL_ASSIGN = 290,              /* SHL_ASSIGN  */
-    INC_ASSIGN = 291,              /* INC_ASSIGN  */
-    DEC_ASSIGN = 292,              /* DEC_ASSIGN  */
-    IF = 293,                      /* IF  */
-    ELSE = 294,                    /* ELSE  */
-    FOR = 295,                     /* FOR  */
-    WHILE = 296,                   /* WHILE  */
-    RETURN = 297,                  /* RETURN  */
-    BREAK = 298,                   /* BREAK  */
-    CONTINUE = 299,                /* CONTINUE  */
-    VARIABLE_T = 300,              /* VARIABLE_T  */
-    IDENT = 301,                   /* IDENT  */
-    STR_LIT = 302,                 /* STR_LIT  */
-    BOOL_LIT = 303,                /* BOOL_LIT  */
-    INT_LIT = 304,                 /* INT_LIT  */
-    FLOAT_LIT = 305                /* FLOAT_LIT  */
+    SHR = 259,                     /* SHR  */
+    SHL = 260,                     /* SHL  */
+    BAN = 261,                     /* BAN  */
+    BOR = 262,                     /* BOR  */
+    BNT = 263,                     /* BNT  */
+    BXO = 264,                     /* BXO  */
+    ADD = 265,                     /* ADD  */
+    SUB = 266,                     /* SUB  */
+    MUL = 267,                     /* MUL  */
+    DIV = 268,                     /* DIV  */
+    REM = 269,                     /* REM  */
+    NOT = 270,                     /* NOT  */
+    GTR = 271,                     /* GTR  */
+    LES = 272,                     /* LES  */
+    GEQ = 273,                     /* GEQ  */
+    LEQ = 274,                     /* LEQ  */
+    EQL = 275,                     /* EQL  */
+    NEQ = 276,                     /* NEQ  */
+    LAN = 277,                     /* LAN  */
+    LOR = 278,                     /* LOR  */
+    VAL_ASSIGN = 279,              /* VAL_ASSIGN  */
+    ADD_ASSIGN = 280,              /* ADD_ASSIGN  */
+    SUB_ASSIGN = 281,              /* SUB_ASSIGN  */
+    MUL_ASSIGN = 282,              /* MUL_ASSIGN  */
+    DIV_ASSIGN = 283,              /* DIV_ASSIGN  */
+    REM_ASSIGN = 284,              /* REM_ASSIGN  */
+    BAN_ASSIGN = 285,              /* BAN_ASSIGN  */
+    BOR_ASSIGN = 286,              /* BOR_ASSIGN  */
+    BXO_ASSIGN = 287,              /* BXO_ASSIGN  */
+    SHR_ASSIGN = 288,              /* SHR_ASSIGN  */
+    SHL_ASSIGN = 289,              /* SHL_ASSIGN  */
+    INC_ASSIGN = 290,              /* INC_ASSIGN  */
+    DEC_ASSIGN = 291,              /* DEC_ASSIGN  */
+    IF = 292,                      /* IF  */
+    ELSE = 293,                    /* ELSE  */
+    FOR = 294,                     /* FOR  */
+    WHILE = 295,                   /* WHILE  */
+    RETURN = 296,                  /* RETURN  */
+    BREAK = 297,                   /* BREAK  */
+    CONTINUE = 298,                /* CONTINUE  */
+    VARIABLE_T = 299,              /* VARIABLE_T  */
+    IDENT = 300,                   /* IDENT  */
+    STR_LIT = 301,                 /* STR_LIT  */
+    BOOL_LIT = 302,                /* BOOL_LIT  */
+    INT_LIT = 303,                 /* INT_LIT  */
+    FLOAT_LIT = 304                /* FLOAT_LIT  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -111,53 +110,52 @@ extern int yydebug;
 #define YYerror 256
 #define YYUNDEF 257
 #define COUT 258
-#define ENDL 259
-#define SHR 260
-#define SHL 261
-#define BAN 262
-#define BOR 263
-#define BNT 264
-#define BXO 265
-#define ADD 266
-#define SUB 267
-#define MUL 268
-#define DIV 269
-#define REM 270
-#define NOT 271
-#define GTR 272
-#define LES 273
-#define GEQ 274
-#define LEQ 275
-#define EQL 276
-#define NEQ 277
-#define LAN 278
-#define LOR 279
-#define VAL_ASSIGN 280
-#define ADD_ASSIGN 281
-#define SUB_ASSIGN 282
-#define MUL_ASSIGN 283
-#define DIV_ASSIGN 284
-#define REM_ASSIGN 285
-#define BAN_ASSIGN 286
-#define BOR_ASSIGN 287
-#define BXO_ASSIGN 288
-#define SHR_ASSIGN 289
-#define SHL_ASSIGN 290
-#define INC_ASSIGN 291
-#define DEC_ASSIGN 292
-#define IF 293
-#define ELSE 294
-#define FOR 295
-#define WHILE 296
-#define RETURN 297
-#define BREAK 298
-#define CONTINUE 299
-#define VARIABLE_T 300
-#define IDENT 301
-#define STR_LIT 302
-#define BOOL_LIT 303
-#define INT_LIT 304
-#define FLOAT_LIT 305
+#define SHR 259
+#define SHL 260
+#define BAN 261
+#define BOR 262
+#define BNT 263
+#define BXO 264
+#define ADD 265
+#define SUB 266
+#define MUL 267
+#define DIV 268
+#define REM 269
+#define NOT 270
+#define GTR 271
+#define LES 272
+#define GEQ 273
+#define LEQ 274
+#define EQL 275
+#define NEQ 276
+#define LAN 277
+#define LOR 278
+#define VAL_ASSIGN 279
+#define ADD_ASSIGN 280
+#define SUB_ASSIGN 281
+#define MUL_ASSIGN 282
+#define DIV_ASSIGN 283
+#define REM_ASSIGN 284
+#define BAN_ASSIGN 285
+#define BOR_ASSIGN 286
+#define BXO_ASSIGN 287
+#define SHR_ASSIGN 288
+#define SHL_ASSIGN 289
+#define INC_ASSIGN 290
+#define DEC_ASSIGN 291
+#define IF 292
+#define ELSE 293
+#define FOR 294
+#define WHILE 295
+#define RETURN 296
+#define BREAK 297
+#define CONTINUE 298
+#define VARIABLE_T 299
+#define IDENT 300
+#define STR_LIT 301
+#define BOOL_LIT 302
+#define INT_LIT 303
+#define FLOAT_LIT 304
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -174,7 +172,7 @@ union YYSTYPE
 
     Object object_val;
 
-#line 178 "./build/y.tab.h"
+#line 176 "./build/y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

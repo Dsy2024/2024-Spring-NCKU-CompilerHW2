@@ -114,7 +114,6 @@ fnumber ({digit}*\.{digit}+)
 {inumber}   { yylval.i_var = atoi(yytext); Return(INT_LIT); }
 {fnumber}   { yylval.f_var = atof(yytext); Return(FLOAT_LIT); }
 {variable}  { yylval.s_var = strdup(yytext); Return(IDENT); }
-\"[^\n\"]*\"     { yylval.s_var = strdup(yytext); Return(STR_LIT); }
 
 [ \t]+      { yycolumn += yyleng; }
 \r?\n       { yycolumn = 0; }

@@ -33,6 +33,21 @@ typedef struct _object {
     SymbolData* symbol;
 } Object;
 
+typedef struct _node {
+    Object *data;
+    struct _node *next;
+} Node;
+
+typedef struct _funcParmNode {
+    Object* data;
+    struct _funcParmNode* next;
+} FuncParmNode;
+
+typedef struct _symbolTableStackNode {
+    Node* symbolTable;  // Pointer to the symbol table
+    struct _symbolTableStackNode* next;  // Pointer to the next node in the stack
+} SymbolTableStackNode;
+
 extern int yylineno;
 extern int funcLineNo;
 
